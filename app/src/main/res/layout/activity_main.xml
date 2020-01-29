@@ -54,16 +54,6 @@
                 android:textStyle="bold"
                 tools:text="0" />
 
-
-            <!--    <ImageButton-->
-            <!--        android:id="@+id/history_ic"-->
-            <!--        android:layout_width="match_parent"-->
-            <!--        android:layout_height="50dp"-->
-            <!--        android:layout_marginLeft="380dp"-->
-            <!--        android:layout_marginTop="5dp"-->
-            <!--        android:background="@drawable/clear_btn"-->
-            <!--        android:src="@drawable/ic_history" />-->
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="90dp"

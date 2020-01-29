@@ -11,7 +11,7 @@ import org.mozilla.javascript.Scriptable
 
 class MainActivity : AppCompatActivity() {
 
-    var process: String? = null
+    var total: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun setNumber(view: View) {
-        process = formula.append((view as Button).text).toString()
+        total = formula.append((view as Button).text).toString()
     }
 
     fun onClear(view: View) {
@@ -33,25 +33,21 @@ class MainActivity : AppCompatActivity() {
         } else {
             val len: Int = formula.getText().length
             val s: String = formula.getText().toString()
-            if (s[len - 1] == '.') {
-                formula.setText(formula.getText().subSequence(0, formula.getText().length - 1))
-            } else {
-                formula.setText(formula.getText().subSequence(0, formula.getText().length - 1))
-            }
+            formula.setText(formula.getText().subSequence(0, formula.getText().length - 1))
         }
     }
 
     fun onEqual(view: View) {
 
-        process = formula.getText().toString()
-        process = process!!.replace("%".toRegex(), "/100")
+        total = formula.getText().toString()
+        total = total!!.replace("%".toRegex(), "/100")
 
         val rhino: Context = Context.enter()
         rhino.setOptimizationLevel(-1)
         var finalResult = ""
         finalResult = try {
             val scriptable: Scriptable = rhino.initStandardObjects()
-            rhino.evaluateString(scriptable, process, "AndroidStudio", 5, null).toString()
+            rhino.evaluateString(scriptable, total, "AndroidStudio", 5, null).toString()
         } catch (e: Exception) {
             "0"
         }
@@ -92,7 +88,6 @@ class MainActivity : AppCompatActivity() {
 //}
 
 
-
 //    fun onEqual() {
 //
 ////        historyAdapter = CalculatorAdapter()
@@ -102,9 +97,6 @@ class MainActivity : AppCompatActivity() {
 //
 ////        Log.e("new2", historyAdapter.listItem.size.toString())
 //    }
-
-
-
 
 
 //    fun btnClick_delete(view: View?) {
