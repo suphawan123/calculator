@@ -49,6 +49,7 @@ dependencies {
     implementation 'com.faendir.rhino:rhino-android:1.5.2'
 
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'net.objecthunter:exp4j:0.4.8'
 
     implementation 'com.google.android.material:material:1.0.0'
 }
