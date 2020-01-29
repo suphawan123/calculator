@@ -54,14 +54,10 @@ class MainActivity : AppCompatActivity() {
         if (formula.getText().equals("")) {
             formula.setText(null)
         } else {
-            val len: Int = formula.getText().length
-            val s: String = formula.getText().toString()
-            if (s[len - 1] == '.') {
-                formula.setText(formula.getText().subSequence(0, formula.getText().length - 1))
-            } else {
-                formula.setText(formula.getText().subSequence(0, formula.getText().length - 1))
-            }
+            formula.setText(formula.getText().subSequence(0, formula.getText().length - 1))
+            return formula.setText("")
         }
+
     }
 
     fun onEqual(view: View) {
@@ -76,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         var finalResult = ""
         finalResult = try {
             val scriptable: Scriptable = rhino.initStandardObjects()
-            rhino.evaluateString(scriptable, process, "AndroidStudio", 1, null).toString()
+            rhino.evaluateString(scriptable, process, "AndroidStudio", 5, null).toString()
         } catch (e: Exception) {
             "0"
         }
